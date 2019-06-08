@@ -4,17 +4,22 @@ class Solution:
     @return: All strobogrammatic numbers
     """
     def findStrobogrammatic(self, n):
-        evenMidCandidate = ["11","69","88","96", "00"]
-        oddMidCandidate = ["0", "1", "8"]
+        # write your code here
+        one_digit = ["0", "1", "8"]
+        two_digits = ["11","69","88","96", "00"]
+        
         if n == 0:
             return [""]
         if n == 1:
-            return oddMidCandidate
+            return one_digit
         if n == 2:
-            return evenMidCandidate[:-1]
+            return two_digits[:-1]
         if n % 2:
-            pre, midCandidate = self.findStrobogrammatic(n-1), oddMidCandidate
+            pre, mid = self.findStrobogrammatic(n-1), one_digit
         else: 
-            pre, midCandidate = self.findStrobogrammatic(n-2), evenMidCandidate
-        premid = ( n - 1 ) / 2
-        return [p[:premid] + c + p[premid:] for c in midCandidate for p in pre]
+            pre, mid = self.findStrobogrammatic(n-2), two_digits
+        cut = ( n - 1 ) / 2
+        
+        for i in mid:
+            for j in pre:
+                return [j[:cut] + i + j[cut:]
