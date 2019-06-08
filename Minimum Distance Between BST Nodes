@@ -1,0 +1,32 @@
+class Solution:
+    """
+    @param root: the root
+    @return: the minimum difference between the values of any two different nodes in the tree
+    """
+    import sys
+    from queue import Queue
+    
+    def minDiffInBST(self, root):
+        
+        #inorder traverse
+        
+        #empty list stored the traversed values
+        nodes = [ ]
+        queue = [root]
+        
+        #root.left.makeList() + [root.data] + root.right.makeList()
+       
+        while queue:
+            root_point = queue.pop()
+            nodes.append(root_point.val)
+            if root_point.left:
+                queue.append(root_point.left)
+            if root_point.right:
+                queue.append(root_point.right)
+        nodes.sort()
+        
+        for i, value in enumerate(nodes[1::]):
+            minDiff = min(value - nodes[i], float('inf'))
+            
+        return minDiff
+        
