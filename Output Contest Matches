@@ -1,15 +1,16 @@
 class Solution:
     """
     @param n: a integer, denote the number of teams
-    @return: return a string
+    @return: a string
     """
-
     def findContestMatch(self, n):
-        p = [""] * n
+        # write your code here
+        match = [""] * n
         for i in range(n):
-            p[i] = str(i + 1)
-        while(n > 1):
-            for i in range(n // 2):
-                p[i] = "(" + p[i] + "," + p[n - 1 - i] + ")"
+            match[i] = str(i + 1)
+     
+        while n > 1:
+            for i in range(n / 2):
+                match[i] = "(" + match[i] + "," + match[n - 1 - i] + ")"
             n /= 2
-        return p[0]
+        return match[0]
