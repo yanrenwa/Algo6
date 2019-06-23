@@ -1,8 +1,4 @@
-class Solution:
-    """
-    @param n: a integer, denote the number of teams
-    @return: a string
-    """
+
     def findContestMatch(self, n):
         # write your code here
         match = [""] * n
