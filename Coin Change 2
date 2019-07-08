@@ -6,3 +6,5 @@ def change(self, amount, coins):
             for j in xrange(coins[i], amount + 1):
                 dp[j] += dp[j - coins[i]]
         return dp[amount]
+
+dp[i]表示能否取到两个集合之差为i的情况
