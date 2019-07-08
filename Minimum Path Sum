@@ -8,3 +8,6 @@ def minPathSum(self, grid):
                 elif i > 0 and j > 0:
                     grid[i][j] += min(grid[i-1][j], grid[i][j-1])
         return grid[len(grid) - 1][len(grid[0]) - 1]
+
+Dp[i][j] 存储从（0， 0） 到（i, j）的最短路径。
+Dp[i][j] = min(Dp[i-1][j]), Dp[i][j-1]) + grid[i][j];
