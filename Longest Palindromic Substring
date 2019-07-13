@@ -22,4 +22,27 @@ def find_palindrome_from(self, string, left, right):
 
 
 
+
+def longestPalindrome(self, s):
+        dp = [[False for j in range(len(s))] for i in range(len(s)+1)]
+        for j in range(len(s)):
+            dp[0][j] = True
+            dp[1][j] = True
+        
+        longestLen = 1
+        startPos = 0
+        for i in range(2, len(s)+1):
+            for j in range(len(s) - i + 1):
+                dp[i][j] = dp[i-2][j+1] and s[j] == s[j + i - 1]
+                if dp[i][j]:
+                    longestLen = i  # as i is always increasing
+                    startPos = j
+                    
+        return s[startPos : startPos + longestLen]
+        
+要点：
+i is length, j is substring start index
+dp[i][j] is True when substring s[j:j+i](lenght=i, starting at j) is palindrome.
+
+
 使用 Manacher's Algorithm O(n) 时间：https://www.felix021.com/blog/read.php?2040
