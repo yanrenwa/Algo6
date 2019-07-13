@@ -7,4 +7,6 @@ def change(self, amount, coins):
                 dp[j] += dp[j - coins[i]]
         return dp[amount]
 
-dp[i]表示能否取到两个集合之差为i的情况
+要点：
+dp[i]表示能否取到两个集合之差为i的情况  amount-coin
+初始设置dp[0] = 1, 返回dp[amount]
