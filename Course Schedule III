@@ -1,0 +1,11 @@
+def scheduleCourse(self, courses):
+        courses = sorted(courses, key=lambda x: x[1])
+        curt_time = 0
+        heap = []
+        for duration, deadline in courses:
+            curt_time += duration
+            heapq.heappush(heap, -duration)
+            if curt_time > deadline:
+                curt_time -= (-heapq.heappop(heap))
+                
+        return len(heap)
