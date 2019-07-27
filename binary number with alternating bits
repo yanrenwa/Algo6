@@ -1,0 +1,4 @@
+ def hasAlternatingBits(self, n):
+        # Write your code here
+        n = n ^ (n>>1)
+        return (n & n+1) == 0
