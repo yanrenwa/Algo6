@@ -1,0 +1,20 @@
+def readBinaryWatch(self, num):
+        """
+        :type num: int
+        :rtype: List[str]
+        """
+        ans = [];
+        hour = [[], [], [], []];
+        min = [[], [], [], [], [], []];
+        for i in range(0, 12):
+            n = bin(i).count('1')
+            hour[n].append(i)
+        for i in range(0, 60):
+            n = bin(i).count('1')
+            min[n].append(i)
+        for i in range(0, num + 1):
+            if i < 4 and num - i < 6:
+                for h in hour[i]:
+                    for m in min[num - i]:
+                        ans.append('%d:%02d' % (h, m));
+        return ans
